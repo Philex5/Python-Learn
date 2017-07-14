@@ -40,26 +40,27 @@ class Perceptron(object):
 
         """
 
-        self.w_=np.zeros(1+X.shape[1])
-        self.errors_=[]
+        self.w_ = np.zeros(1+X.shape[1])
+        self.errors_ = []
 
         for _ in range(self.n_iter):
-            errors=0
-            for xi,target in zip(X,y):
-                update=self.eta*(target-self.predict(xi))
-                self.w_[1:]+=update*xi
-                self.w_[0]+=update
-                errors+=int(update!=0.0)
+            errors = 0
+            for xi, target in zip(X, y):
+                """every xi corresponds a sample(feature list)"""
+                update = self.eta*(target-self.predict(xi))
+                self.w_[1:] += update*xi
+                self.w_[0] += update
+                errors += int(update != 0.0)
             self.errors_.append(errors)
         return self
 
     def net_input(self,X):
         """calculate net input"""
         """计算矩阵和得到z，再与阈值的相反数相加"""
-        return np.dot(X,self.w_[1:])+self.w_[0]
+        return np.dot(X, self.w_[1:])+self.w_[0]
 
-    def predict(self,X):
+    def predict(self, X):
         """return class laber after unit step"""
-        return np.where(self.net_input(X) >= 0.0,1,-1)
+        return np.where(self.net_input(X) >= 0.0, 1, -1)
 
 
