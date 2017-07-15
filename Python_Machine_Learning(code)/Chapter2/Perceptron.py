@@ -18,11 +18,11 @@ class Perceptron(object):
 
     """
 
-    def __init__(self,eta=0.01,n_iter=10):
-        self.eta=eta
-        self.n_iter=n_iter
+    def __init__(self, eta=0.01, n_iter=10):
+        self.eta = eta
+        self.n_iter = n_iter
 
-    def fit(self,X,y):
+    def fit(self, X, y):
         """Fit training data
 
         parameter
@@ -54,7 +54,7 @@ class Perceptron(object):
             self.errors_.append(errors)
         return self
 
-    def net_input(self,X):
+    def net_input(self, X):
         """calculate net input"""
         """计算矩阵和得到z，再与阈值的相反数相加"""
         return np.dot(X, self.w_[1:])+self.w_[0]
