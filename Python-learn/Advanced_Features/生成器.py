@@ -74,6 +74,17 @@ Excercises:杨辉三角
 """
 
 def triangles():
+    """ 标准答案，So Terse ！"""
+
+    L = [1]
+    while True:
+        yield L
+        L.append(0)
+        L = [L[i-1]+L[i] for i in range(len(L))]
+        #L[-1]是list最后一个元素
+
+"""
+在下拙答：
     i = 1
     list=[]
     newlist=[]
@@ -93,6 +104,7 @@ def triangles():
         #必须用copy否则就是代表同一个list，会一起变化
         list = newlist.copy()
         yield newlist
+"""
 
 n = 0
 for t in triangles():
