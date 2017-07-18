@@ -89,16 +89,13 @@ def str2float(s):
     def char2int1(s):
         return {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5,
                 '6': 6, '7': 7, '8': 8, '9': 9}[s]
-    def minus_mul(m):
-        re = 0
-        count = 0
-        for i in m:
-            re = re + i * pow(10, -(count+1))
-            count = count + 1
-        return re
 
     flo = reduce(lambda x, y: x*10+y, map(char2int1, s1[0]))
-    flo = flo + minus_mul(map(char2int1, s1[1]))
+    flo = flo + 0.1*reduce(lambda x, y: x*pow(10, -1)+y, sorted(list(map(char2int1, s1[1])), reverse=True))
     return flo
 
 print(str2float('123.456'))
+
+lis = [4, 5, 6]
+lis.sort()
+print(lis)
