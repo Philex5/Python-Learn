@@ -25,7 +25,7 @@ entry_passw=tk.Entry(window,textvariable=var_usr_password,show='*')
 entry_passw.place(x=160,y=250)
 
 
-#Login Function
+#Login 2.Function
 def usr_login():
     usr_name=var_usr_name.get()
     usr_pwd=var_usr_password.get()
@@ -48,7 +48,7 @@ def usr_login():
                 usr_sign_up()
 
 
-#Sign up Function
+#Sign up 2.Function
 def usr_sign_up():
     def sign_to_python():
         np = new_pwd.get()
