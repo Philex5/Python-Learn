@@ -31,3 +31,12 @@ def test():
 if __name__ == '__main__':
     test()
 
+"""
+   作用域：
+       不希望被引用的非公开函数和变量：_xxx
+       封装private性质的函数，隐藏实现细节
+          def func1()
+          def func2
+          def interface():
+              return  state, fun1,func2 
+"""
