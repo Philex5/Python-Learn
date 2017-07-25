@@ -69,8 +69,6 @@ class Fib1(object):
                 a, b = b, a+b
             return L
 
-
-
 print(Fib1()[5])
 print(Fib1()[5:8])
 
@@ -99,3 +97,39 @@ class Chain(object):
         return self._path
 
 print(Chain().status.user.timeline.list)
+
+
+class Chain1(object):
+
+    def __init__(self, path='GET '):
+        self._path = path
+
+    def __getattr__(self, path):
+        return Chain1('%s/%s' % (self._path, path))
+
+    def __call__(self, path):
+        return Chain1('%s/%s' % (self._path, path))
+
+    def __str__(self):
+        return self._path
+
+print(Chain1().users('Philex').reposName)
+
+"""
+   __call__ : 任何类，只需要定义一个__call__()方法，就可以直接对实例进行调用。
+   
+"""
+
+
+class callTest(object):
+    def __init__(self, name):
+        self.name = name
+
+    def __call__(self, commit):
+        print(' My name is %s, I am very %s' % (self.name, commit))
+
+ct = callTest('Philex')
+ct('handsome')
+
+# 判断是否为一个可调用对象
+print(callable(ct))
