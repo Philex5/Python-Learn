@@ -30,6 +30,6 @@ print(10/n)
 
 
 """
-  python调试器物：pdb
+  python调试器：pdb
   我有IDE
 """
