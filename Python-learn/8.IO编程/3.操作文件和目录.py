@@ -36,32 +36,27 @@ print([x for x in os.listdir('.') if os.path.isfile(x) and os.path.splitext(x)[1
 
 
 # Exercise
-def find(di, s, path):
-    if os.path.isfile(di):
-        if s in os.path.split(di)[1]:
+def find(path, s):
+    d = os.path.abspath(path)
+    if not os.path.isdir(d):  # os.path.isfile(path)用不了？ is a bug!
+        if s in os.path.split(d)[1]:
             print(path)
         return
     else:
         dirs = [os.path.abspath(x) for x in os.listdir(path)]
         for fod in dirs:
-            path1 = ('%s/%s' % (path, os.path.split(fod)[1]))
-            find(fod, s, path1)
+            path1 = (os.path.join(path, os.path.split(fod)[1]))
+            find(path1, s)
 
+find('./', 'philex')
 
-def findfile(s):
-    dirs = [os.path.abspath(x) for x in os.listdir('.')]
-
-    for fod in dirs:
-        if os.path.isfile(fod):
-            if s in os.path.split(fod)[1]:
-                print("./%s" % os.path.split(fod)[1])
-            else:
-                continue
-        else:
-            path = ('./%s' % os.path.split(fod)[1])
-            find(fod, s, path)
-
-findfile('philex')
-
+from datetime import datetime
 # dirs = [x for x in os.listdir('.')]
 # print('3' in (os.path.split(dirs[1])[-1]))
+pwd = os.path.abspath('.')
+
+for f in os.listdir(pwd):
+    fsize = os.path.getsize(f)
+    mtime = datetime.fromtimestamp(os.path.getmtime(f)).strftime('%Y-%m-%d %H:%M')
+    flag = '/' if os.path.isdir(f) else ''
+    print('%10d  %s  %s%s' % (fsize, mtime, f, flag))
