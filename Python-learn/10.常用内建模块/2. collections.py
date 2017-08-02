@@ -1,5 +1,5 @@
 """
-namedtyple
+namedtuple
     创建一个自定义的tuple对象，并且规定了tuple元素的个数。
     很方便的定义一个数据类型，它具备tuple的不变性，还能使用属性访问
 
