@@ -53,18 +53,62 @@ parser.Parse(xml)
 """
 
 # Exercise
+from datetime import datetime, timedelta
 
 
 class WeatherSaxHandler(object):
-    pass
+    def __init__(self):
+        self.today = datetime.now().strftime('%a')
+        self.tomorrow = ((datetime.now() + timedelta(days=1)).strftime('%a'))
+        self._data = {
+            'city:': '',
+            'country': '',
+            'today': {
+                'text': '',
+                'low': 0,
+                'high': 0
+            },
+            'tomorrow': {
+                'text': '',
+                'low': 0,
+                'high': 0
+            }
+
+        }
 
 
-def parse_weather(xml):
-    return {
+    @property
+    def get_data(self):
+        return self._data
 
-    }
+    def start_element(self, name, attrs):
+        if name == 'yweather:location':
+           self._data['city'] = attrs['city']
+           self.__data['country'] = attrs['country']
+        if name == 'yweather:forecast':
+            if attrs['day'] == self.today:
+                self.__data['today']['text'] = attrs['text']
+                self.__data['today']['low'] = attrs['low']
+                self.__data['today']['high'] = attrs['high']
+            if attrs['day'] == self.tomorrow:
+                self.__data['tomorrow']['text'] = attrs['text']
+                self.__data['tomorrow']['low'] = attrs['low']
+                self.__data['tomorrow']['high'] = attrs['high']
 
-weather = WeatherSaxHandler()
+    def end_element(self, name, attrs):
+        pass
+
+    def char_data(self, text):
+        pass
+
+
+data = 'your data'
+
+handler = WeatherSaxHandler()
 parser = ParserCreate()
-parser.StartElementHandler = WeatherSaxHandler.start_elment
+parser.StartElementHandler = handler.start_element
+parser.EndElementHandler = handler.end_element
+parser.CharacterDataHandler = handler.char_data
+parser.Parse(data)
 
+print(handler.get_data)
