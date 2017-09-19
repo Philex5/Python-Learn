@@ -94,6 +94,7 @@ def str2float(s):
     flo = flo + 0.1*reduce(lambda x, y: x*pow(10, -1)+y, sorted(list(map(char2int1, s1[1])), reverse=True))
     return flo
 
+
 print(str2float('123.456'))
 
 lis = [4, 5, 6]

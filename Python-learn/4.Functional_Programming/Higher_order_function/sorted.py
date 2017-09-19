@@ -11,12 +11,8 @@ print(sorted(StrList, key=str.lower, reverse=True))
 
 # Exsercise 1:
 L = [('Bob', 75), ('Adam', 92), ('Bart', 66), ('List', 88)]
-
-
-
-
-L2 = sorted(L, key = itemgetter(0))
+L2 = sorted(L, key=itemgetter(0))
 print(L2)
-print(sorted(L, key = lambda t : t[1]))
-print(sorted(L, key = itemgetter(1), reverse=True))
+print(sorted(L, key=lambda t : t[1]))
+print(sorted(L, key=itemgetter(1), reverse=True))
 

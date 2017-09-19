@@ -14,10 +14,12 @@ def log(func):
         return func(*args, **kw)
     return wrapper
 
-@log
+
 # 相当于执行了: now = log(now)
+@log
 def now():
     print('2015-3-25')
+
 
 now()
 
@@ -59,6 +61,7 @@ def now():
 
 now()
 print(now.__name__)
+
 
 # Exercise
 

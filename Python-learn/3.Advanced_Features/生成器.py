@@ -6,9 +6,8 @@
 """
 Way1:把列表生成式的[]改成()
 """
-g=(x*x for x in range(10))
+g = (x*x for x in range(10))
 print(g)
-
 
 """
 how to print generator
@@ -30,7 +29,7 @@ def fib(max):
     while n<max:
         # print(b)
         yield b
-        a, b=b, a+b
+        a, b = b, a+b
         n = n+1
     return 'done'
 
@@ -43,14 +42,12 @@ print(f)
 """
 while True:
     try:
-        x=next(f)
+        x = next(f)
         print('f',x)
 
     except StopIteration as e:
         print('Generator return value:',e.value)
         break
-
-
 
 for j in f:
     print(j)
@@ -81,7 +78,7 @@ def triangles():
         yield L
         L.append(0)
         L = [L[i-1]+L[i] for i in range(len(L))]
-        #L[-1]是list最后一个元素
+        # L[-1]是list最后一个元素
 
 """
 在下拙答：

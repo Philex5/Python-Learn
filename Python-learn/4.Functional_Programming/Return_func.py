@@ -8,6 +8,8 @@ def calc_sum(*args):
 """
 返回的不是求和结果，而是求和函数
 """
+
+
 def lazy_sum(*args):
     def sum():
         ax = 0
@@ -15,6 +17,7 @@ def lazy_sum(*args):
             ax = ax + n
         return ax
     return sum
+
 
 f = lazy_sum(*(1, 3, 5))
 print(f)
@@ -43,12 +46,14 @@ def count():
         fs.append(f)
     return fs
 
+
 f1, f2, f3 = count()
 
 # 调用f时，i已经变成了3
 print(f1())
 print(f2())
 print(f3())
+
 
 def count():
     def f(j):
@@ -59,6 +64,7 @@ def count():
     for i in range(1, 4):
         fs.append(f(i))
     return fs
+
 
 f1, f2, f3 = count()
 print(f1())

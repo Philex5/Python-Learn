@@ -29,7 +29,7 @@ list dict str 是Irerable，但不是Iterator
 可以通过调用iter()使它们变成Iterator  
    for循环本质就是先iter(Iterable),再不断调用next(i)
 """
-print(isinstance(iter({}),Iterator))
+print(isinstance(iter({}), Iterator))
 
 
 

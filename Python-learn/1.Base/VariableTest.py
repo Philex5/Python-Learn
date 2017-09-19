@@ -3,7 +3,7 @@
 #1.整型
 a=100
 b=0xff00
-#   python中除法是精确的
+# Python中除法是精确的
 c=33
 print(a/c)
 print(a//c)
