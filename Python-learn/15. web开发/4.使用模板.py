@@ -33,3 +33,15 @@ def signin():
 
 if __name__ == ' __main__ ':
     app.run()
+
+"""
+Flask 默认使用的是jinja2模板：
+在Jinja2模板中，我们用{{ name }}表示一个需要替换的变量。
+很多时候，还需要循环、条件判断等指令语句，在Jinja2中，用{% ... %}表示指令。
+比如循环输出页码：
+
+{% for i in page_list %}
+    <a href="/page/{{ i }}">{{ i }}</a>
+{% endfor %}
+
+"""
