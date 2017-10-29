@@ -32,7 +32,7 @@ print([x for x in os.listdir('.')])
 """列出当前目录下所有目录："""
 print([x for x in os.listdir('.') if os.path.isdir(x)])
 """列出所有.py文件"""
-print([x for x in os.listdir('.') if os.path.isfile(x) and os.path.splitext(x)[1]=='.py'])
+print([x for x in os.listdir('.') if os.path.isfile(x) and os.path.splitext(x)[1] == '.py'])
 
 
 # Exercise
